@@ -1,8 +1,10 @@
+# 如何制作爆款 Instagram 滤镜
+
 ## whichDisneyAreYou
 
 很多朋友前阵子可能在各大平台上看到过一款滤镜『你是迪斯尼的哪个角色 whichDisneyAreYou』，其实这是 Instagram 平台的一款滤镜，但并非官方推出，而是用户自己制作，那么如何制作自己的 Instagram 滤镜呢？今天就来全方位教你！
 
-先来看看最终效果，我做的『你是哪个神奇宝贝 whichPokemonAreYou』滤镜（网站展示的 GIF 效果不是很好）。
+先来看看最终效果，我做的『你是哪个神奇宝贝 whichPokemonAreYou』滤镜。
 
 ![which Pokemon are you？](https://cdn.sspai.com/2020/03/27/01f5337c9fa448040468bd9493c0aba4.gif)
 
