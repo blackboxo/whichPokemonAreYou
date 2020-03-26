@@ -4,14 +4,14 @@
 
 先来看看最终效果，我做的『你是哪个神奇宝贝 whichPokemonAreYou』滤镜（网站展示的 GIF 效果不是很好）。
 
-![img](https://cdn.sspai.com/2020/03/27/01f5337c9fa448040468bd9493c0aba4.gif)which Pokemon are you？
+![which Pokemon are you？](https://cdn.sspai.com/2020/03/27/01f5337c9fa448040468bd9493c0aba4.gif)
 
 ## 前期准备
 
 1. 首先需要一个 Instagram 账号，或者 Facebook 账号，在这两个平台都可发布自己的滤镜。
 2. 下载 Facebook 官方推出的制作滤镜的工具 [Spark AR Studio](https://sparkar.facebook.com/ar-studio/)。
 
-![img](https://cdn.sspai.com/2020/03/26/214ec5e6371395f250f1a4e2152d8fad.png)Spark AR Studio
+![img](https://cdn.sspai.com/2020/03/26/214ec5e6371395f250f1a4e2152d8fad.png)
 
  
 
@@ -27,7 +27,7 @@
 
 左上角是场景区域，左下角是素材区，中间上方用来预览你的滤镜效果（默认就是一个黑人小哥一直摇头晃脑展示你的滤镜），中间下方是滤镜的所有逻辑（如果没有这个区域，可以在菜单栏 View 中打开），右方是属性区。
 
-![img](https://cdn.sspai.com/2020/03/26/33daf69f332c4870c402aad2be08a7fd.png)编辑器主界面
+![img](https://cdn.sspai.com/2020/03/26/33daf69f332c4870c402aad2be08a7fd.png)
 
 ## 开始制作滤镜
 
@@ -50,7 +50,7 @@
 1. 放入问题页的素材：点击菜单栏 Add -> Material 来添加素材，命名为『question』，点击 Texture -> Choose File 选择提前准备好的『问题页』图片，你会看到左下角出现一个 Textures 里包含了你选择的图片。
 2. 放入神奇宝贝序列的素材：再次点击菜单栏 Add -> Material 来添加素材，命名为『answer』，点击 Texture 中**左边的箭头**，选择 New Animation Sequence 建立一个动画序列，在这个动画序列里点击 Texture -> Choose File，**同时选择**你要循环播放的**所有图片**，这些图片就会自动形成一个动画序列。
 
-![img](https://cdn.sspai.com/2020/03/26/359f48e1ac9eb4b962a91397116125d7.png)完成素材添加
+![img](https://cdn.sspai.com/2020/03/26/359f48e1ac9eb4b962a91397116125d7.png)
 
 ## 添加场景：
 
@@ -58,7 +58,7 @@
 2. 因为我们的图片效果是平面，右键 Face Tracker 点击 Add -> Plane，点击 Plane，在其属性栏的 Material 中 + 添加前面定义的 question。在中间上方的区域，可以移动、旋转或缩放该图片，也可以直接在属性栏定义，我们将图片上移到黑人的额头。
 3. 继续添加定义好的动画序列，一样的步骤：右键 Face Tracker 点击 Add -> Plane，点击 Plane，在其属性栏的 Material 中 + 添加前面定义的 answer。将它调整到和 question 一样大小和位置，可以直接复制 question 的九个参数。
 
-![img](https://cdn.sspai.com/2020/03/26/eeaed57e01cfb31274195dff94c137b0.png)完成场景添加
+![img](https://cdn.sspai.com/2020/03/26/eeaed57e01cfb31274195dff94c137b0.png)
 
 ### 添加逻辑：
 
@@ -69,12 +69,12 @@
 3. 小于 1.5 秒时出现问题页，大于 1.5 秒时出现答案页，因此先添加控制出现与否的模块。选择左上角 Scene 中的 plane0，也就是问题页，在属性栏中的 Visible 点击左侧箭头，逻辑区出现黄色模块，对 plane1 也就是答案页进行一样的操作。
 4. 将 Less Than 的右侧连接到 question 的左侧，再拉出 Less Than 的右侧，选择 Not 函数，将 Not 连接到答案页。点击编辑器最左侧边栏的刷新按钮，可以看到黑人头上已经实现了根据时间切换问题与答案的效果。
 
-![img](https://cdn.sspai.com/2020/03/26/5839a0c95d552c5967a81e5038db1801.png)实现根据时间切换问题与答案
+![img](https://cdn.sspai.com/2020/03/26/5839a0c95d552c5967a81e5038db1801.png)
 
 1. 要将动画在某个时间点停下来，从 Offset 再拉出一个 Less Than，设置为 4 秒，拉出一个 Loop Animation，这是用来循环的，将循环时间改短一点，比如 0.001，再用下方箭头 looped 拉出一个 Random，这是用来随机数字的，将 End Value 设置为答案页图片的数量，这边做的就是不断随机出数字，然后在时间到 4 秒时的那个数字赋给动画序列，决定最终选择的是序列的第几帧。
 2. 点击素材区的 answerSequence，点击属性区的 CurrentFrame 左侧箭头，将上一步的 Random 接到 CurrentFrame。此时再刷新一次，可以看到实现了四秒时停在某一帧的效果。离胜利越来越近了！
 
-![img](https://cdn.sspai.com/2020/03/26/393866f69f273690ee22f98fa0c64399.png)完成动画停在随机一帧
+![img](https://cdn.sspai.com/2020/03/26/393866f69f273690ee22f98fa0c64399.png)
 
 最开始的 Camera 模块还没用到，将最下面的箭头连到 Offset 下面的 Reset 箭头，表示开始录像的时候重置计时器。
 
@@ -94,7 +94,7 @@
 1. 出现答案页的条件不仅是大于 1.5 秒，还需要已经开始录屏，因此添加一个 And 函数，从 Camera 的 Pulse 拉出 Switch 函数，删除连到 Flip 的线，将 On 和 Off 对应连接上，从 Less Than（1.5）拉出 Switch 函数，将 On 和 Off 反着连接（为啥？），将两个 Switch 的输出分别连到 And 函数的输入。
 2. 将之前 answer 前面的 Not 函数换到 questio(plane0) 的前面（又为啥？？），将 And 和 Not 连接，And 和 answer(plane1) 连接，最终结果见下图。
 
-![img](https://cdn.sspai.com/2020/03/26/54240752f5f675ea5ad71811a1407fda.png)伟大工程终于完成
+![img](https://cdn.sspai.com/2020/03/26/54240752f5f675ea5ad71811a1407fda.png)
 
 一个完美主义者的滤镜终于完成了！
 
@@ -108,10 +108,8 @@
 
 在网站中可以看到自己的滤镜被多少人观看、拍摄和分享。这是我的滤镜现在的数据，虽然称不上“爆款”，但你做的滤镜一定可以成为爆款！
 
-![img](https://cdn.sspai.com/2020/03/26/ecc477d759830d3d0e2b369322016963.png)我的滤镜数据
+![img](https://cdn.sspai.com/2020/03/26/ecc477d759830d3d0e2b369322016963.png)
 
 这个编辑器里还有许多功能可以探索，尽情发挥你的想象力！
-
-
 
 同时，抖音也有自己的滤镜编辑器，但功能没有这个强大，有兴趣的同学也可以玩一玩，基本功能是类似的。（抖音的用户自制滤镜排行榜常年被土味滤镜霸占）
